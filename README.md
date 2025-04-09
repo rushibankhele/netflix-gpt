@@ -3,12 +3,15 @@
 
 - create-react-app
 - configured tailwind-css 
+- Header
+- Login-form
+- Sign-up form
 
 
 
 # features
 
--Login / Signup 
+- Login / Signup 
     - SignIn / SignUp form
     - Redirect to browse page 
 - Browes page( After Authentication )
