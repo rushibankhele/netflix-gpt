@@ -30,6 +30,12 @@
 - Create custom hook & update store with trailer video data
 - Embeded the youtube video and make itauto play and mute
 - Added Tailwind classed to make main container looks awesome
+- Build Secondary Component
+- Build Movie list
+- Build Movie Card
+- TMDB image CDN URL
+- Build browse page amazing using tailwind css
+- usePopularMovies/useTopRatedMovies custom hook
 
 
 
