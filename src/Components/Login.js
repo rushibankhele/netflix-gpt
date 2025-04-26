@@ -7,16 +7,14 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { userAvatar } from "../utils/constants";
 
 const Login = () => {
   const [isSignInform, setIsSignInform] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   const dispatch = useDispatch();
-
-  const navigate = useNavigate();
 
   const toggleSignInform = () => {
     setIsSignInform(!isSignInform);
@@ -29,7 +27,7 @@ const Login = () => {
     //validation logic
     const message = checkValidate(email.current.value, password.current.value);
     setErrorMessage(message);
-    // console.log(errorMessage)
+    // (errorMessage)
 
     if (message) return;
 
@@ -45,7 +43,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://wallpapercave.com/wp/wp9216688.jpg",
+            photoURL: userAvatar,
           })
             .then(() => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
@@ -57,7 +55,6 @@ const Login = () => {
                   photoURL: photoURL
                 })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               setErrorMessage(error.message);
@@ -66,7 +63,6 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode + "-" + errorMessage);
           // ..
         });
     } else {
@@ -79,15 +75,14 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
+          
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage("User not found");
-          console.log(errorCode, errorMessage);
+          
         });
     }
   };
